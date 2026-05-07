@@ -152,11 +152,11 @@ export default function MyAccount() {
                     <div className="row">
                       <div className="col-md-12">
                         <label>Address</label>
-                        <input className="form-control" type="text" defaultValue="123 Main Street" />
+                        <input className="form-control" type="text" defaultValue="18 Mercer Atelier" />
                       </div>
                       <div className="col-md-6">
                         <label>City</label>
-                        <input className="form-control" type="text" defaultValue="Los Angeles" />
+                        <input className="form-control" type="text" defaultValue="West Hollywood" />
                       </div>
                       <div className="col-md-6">
                         <label>State</label>
@@ -164,7 +164,7 @@ export default function MyAccount() {
                       </div>
                       <div className="col-md-6">
                         <label>ZIP Code</label>
-                        <input className="form-control" type="text" defaultValue="90001" />
+                        <input className="form-control" type="text" defaultValue="90069" />
                       </div>
                       <div className="col-md-6">
                         <label>Country</label>

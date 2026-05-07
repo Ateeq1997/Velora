@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 
+import { contactDetails } from '../data/storeContent'
+
 export default function Footer() {
   return (
     <>
@@ -10,9 +12,9 @@ export default function Footer() {
               <div className="footer-widget">
                 <h2>Get in Touch</h2>
                 <div className="contact-info">
-                  <p><i className="fa fa-map-marker"></i> 123 Aurevia Avenue, Los Angeles, USA</p>
-                  <p><i className="fa fa-envelope"></i> support@aurevia.shop</p>
-                  <p><i className="fa fa-phone"></i> +123-456-7890</p>
+                  <p><i className="fa fa-map-marker"></i> {contactDetails.footerAddress}</p>
+                  <p><i className="fa fa-envelope"></i> {contactDetails.primaryEmail}</p>
+                  <p><i className="fa fa-phone"></i> {contactDetails.phone}</p>
                 </div>
               </div>
             </div>
@@ -81,7 +83,7 @@ export default function Footer() {
               <p>Copyright &copy; <Link to="/">Aurevia</Link>. All Rights Reserved</p>
             </div>
             <div className="col-md-6 template-by">
-              <p>Curated luxury, fashion, and tech for modern shoppers</p>
+              <p>Design-led fashion, accessories, and premium tech in one editorial storefront</p>
             </div>
           </div>
         </div>

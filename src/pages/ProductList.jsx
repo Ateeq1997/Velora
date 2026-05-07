@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import Breadcrumb from '../components/Breadcrumb'
 import ProductCard from '../components/ProductCard'
 import { useShop } from '../context/ShopContext'
+import { catalog } from '../data/storeContent'
 
 const sidebarSliderSettings = {
   autoplay: true,
@@ -14,20 +15,7 @@ const sidebarSliderSettings = {
   slidesToScroll: 1,
 }
 
-const products = [
-  { id: 1, image: '/img/product-1.jpg', name: 'Premium Wireless Headphones', price: 149, category: 'Electronics & Gadgets', brand: 'TechPro', tags: ['Premium', 'Trending'] },
-  { id: 2, image: '/img/product-2.jpg', name: 'Designer Leather Jacket', price: 299, category: 'Fashion & Clothing', brand: 'LuxeWear', tags: ['Luxury', 'Exclusive'] },
-  { id: 3, image: '/img/product-3.jpg', name: 'Smart Fitness Watch', price: 199, category: 'Sports & Fitness', brand: 'EliteFit', tags: ['Trending', 'Premium'] },
-  { id: 4, image: '/img/product-4.jpg', name: 'Elegant Silk Dress', price: 129, category: 'Fashion & Clothing', brand: 'StyleCo', tags: ['New Arrivals', 'Fashion'] },
-  { id: 5, image: '/img/product-5.jpg', name: 'Pro Gaming Mouse', price: 89, category: 'Electronics & Gadgets', brand: 'TechPro', tags: ['Gadgets', 'Sale'] },
-  { id: 6, image: '/img/product-6.jpg', name: 'Casual Denim Jeans', price: 79, category: 'Fashion & Clothing', brand: 'UrbanEdge', tags: ['Clothing', 'Trending'] },
-  { id: 7, image: '/img/product-7.jpg', name: 'Luxury Perfume Set', price: 119, category: 'Beauty & Personal Care', brand: 'NexBrand', tags: ['Luxury', 'Beauty'] },
-  { id: 8, image: '/img/product-8.jpg', name: 'Bluetooth Speaker', price: 99, category: 'Electronics & Gadgets', brand: 'TechPro', tags: ['Electronics', 'Premium'] },
-  { id: 9, image: '/img/product-9.jpg', name: 'Running Sneakers', price: 139, category: 'Sports & Fitness', brand: 'EliteFit', tags: ['Sports', 'New Arrivals'] },
-  { id: 10, image: '/img/product-10.jpg', name: 'Classic Sunglasses', price: 69, category: 'Fashion & Clothing', brand: 'LuxeWear', tags: ['Accessories', 'Sale'] },
-  { id: 11, image: '/img/product-11.jpg', name: 'Crossbody Handbag', price: 159, category: 'Fashion & Clothing', brand: 'StyleCo', tags: ['Accessories', 'Exclusive'] },
-  { id: 12, image: '/img/product-12.jpg', name: 'Sport Water Bottle', price: 39, category: 'Sports & Fitness', brand: 'UrbanEdge', tags: ['Sports', 'Premium'] },
-]
+const products = catalog
 
 const categories = [
   'Fashion & Clothing',
@@ -201,7 +189,7 @@ export default function ProductList() {
                   <Slider {...sidebarSliderSettings}>
                     <div className="product-item">
                       <div className="product-title">
-                        <Link to="/product-detail">Premium Wireless Headphones</Link>
+                        <Link to="/product-detail">{products[0].name}</Link>
                         <div className="ratting">
                           <i className="fa fa-star"></i><i className="fa fa-star"></i>
                           <i className="fa fa-star"></i><i className="fa fa-star"></i>
@@ -217,13 +205,13 @@ export default function ProductList() {
                         </div>
                       </div>
                       <div className="product-price">
-                        <h3><span>$</span>149</h3>
+                        <h3><span>$</span>{products[0].price}</h3>
                         <Link className="btn" to="/checkout" onClick={() => addToCart(products[0])}><i className="fa fa-shopping-cart"></i>Buy Now</Link>
                       </div>
                     </div>
                     <div className="product-item">
                       <div className="product-title">
-                        <Link to="/product-detail">Smart Fitness Watch</Link>
+                        <Link to="/product-detail">{products[2].name}</Link>
                         <div className="ratting">
                           <i className="fa fa-star"></i><i className="fa fa-star"></i>
                           <i className="fa fa-star"></i><i className="fa fa-star"></i>
@@ -239,7 +227,7 @@ export default function ProductList() {
                         </div>
                       </div>
                       <div className="product-price">
-                        <h3><span>$</span>199</h3>
+                        <h3><span>$</span>{products[2].price}</h3>
                         <Link className="btn" to="/checkout" onClick={() => addToCart(products[2])}><i className="fa fa-shopping-cart"></i>Buy Now</Link>
                       </div>
                     </div>

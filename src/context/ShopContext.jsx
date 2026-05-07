@@ -1,20 +1,14 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 
+import { selectProducts } from '../data/storeContent'
+
 const ShopContext = createContext(null)
 
 const STORAGE_KEY = 'aurevia-shop-state'
 
-const defaultCartItems = [
-  { id: 1, image: '/img/product-1.jpg', name: 'Premium Wireless Headphones', price: 149, qty: 1 },
-  { id: 2, image: '/img/product-2.jpg', name: 'Designer Leather Jacket', price: 299, qty: 1 },
-  { id: 3, image: '/img/product-3.jpg', name: 'Smart Fitness Watch', price: 199, qty: 1 },
-]
+const defaultCartItems = selectProducts([1, 2, 3]).map((product) => ({ ...product, qty: 1 }))
 
-const defaultWishlistItems = [
-  { id: 7, image: '/img/product-7.jpg', name: 'Luxury Perfume Set', price: 119, qty: 1 },
-  { id: 8, image: '/img/product-8.jpg', name: 'Bluetooth Speaker', price: 99, qty: 1 },
-  { id: 10, image: '/img/product-10.jpg', name: 'Classic Sunglasses', price: 69, qty: 1 },
-]
+const defaultWishlistItems = selectProducts([7, 8, 10]).map((product) => ({ ...product, qty: 1 }))
 
 const loadInitialState = () => {
   if (typeof window === 'undefined') {

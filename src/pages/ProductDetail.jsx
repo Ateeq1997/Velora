@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import Breadcrumb from '../components/Breadcrumb'
 import ProductCard from '../components/ProductCard'
 import { useShop } from '../context/ShopContext'
+import { productDetailContent, relatedProductIds, selectProducts } from '../data/storeContent'
 
 const breadcrumbItems = [
   { label: 'Home', path: '/' },
@@ -34,12 +35,7 @@ const reviewSliderSettings = {
   responsive: [{ breakpoint: 768, settings: { slidesToShow: 1 } }],
 }
 
-const relatedProducts = [
-  { id: 10, image: '/img/product-10.jpg', name: 'Classic Sunglasses', price: 69 },
-  { id: 8, image: '/img/product-8.jpg', name: 'Bluetooth Speaker', price: 99 },
-  { id: 6, image: '/img/product-6.jpg', name: 'Casual Denim Jeans', price: 79 },
-  { id: 4, image: '/img/product-4.jpg', name: 'Elegant Silk Dress', price: 129 },
-]
+const relatedProducts = selectProducts(relatedProductIds)
 
 const productImages = [
   '/img/product-1.jpg',
@@ -62,9 +58,7 @@ export default function ProductDetail() {
   const navSliderRef = useRef(null)
 
   const currentProduct = {
-    id: 1,
-    image: '/img/product-1.jpg',
-    name: 'Premium Wireless Headphones',
+    ...selectProducts([productDetailContent.productId])[0],
     price: 149,
     size: selectedSize,
     color: selectedColor,
@@ -121,7 +115,7 @@ export default function ProductDetail() {
 
                   <div className="col-md-7">
                     <div className="product-content">
-                      <div className="title"><h2>Premium Wireless Headphones</h2></div>
+                      <div className="title"><h2>{currentProduct.name}</h2></div>
                       <div className="ratting">
                         <i className="fa fa-star"></i><i className="fa fa-star"></i>
                         <i className="fa fa-star"></i><i className="fa fa-star"></i>
@@ -129,7 +123,7 @@ export default function ProductDetail() {
                       </div>
                       <div className="price">
                         <h4>Price:</h4>
-                        <p>$149 <span>$199</span></p>
+                        <p>${currentProduct.price} <span>${productDetailContent.originalPrice}</span></p>
                       </div>
                       <div className="quantity">
                         <h4>Quantity:</h4>
@@ -194,31 +188,29 @@ export default function ProductDetail() {
                     {activeTab === 'description' && (
                       <div className="container tab-pane active">
                         <h4>Product Description</h4>
-                        <p>Experience premium audio quality with our state-of-the-art wireless headphones. Featuring advanced noise-cancellation technology, 30-hour battery life, and ultra-comfortable ear cushions. Perfect for music lovers, gamers, and professionals who demand the best in audio performance. The sleek design combines style with functionality, making these headphones a must-have accessory.</p>
+                        <p>{productDetailContent.description}</p>
                       </div>
                     )}
                     {activeTab === 'specification' && (
                       <div className="container tab-pane active">
                         <h4>Product Specification</h4>
                         <ul>
-                          <li>Driver Size: 40mm dynamic drivers</li>
-                          <li>Frequency Response: 20Hz – 20,000Hz</li>
-                          <li>Battery Life: Up to 30 hours</li>
-                          <li>Connectivity: Bluetooth 5.0, 3.5mm jack</li>
-                          <li>Weight: 250g</li>
+                          {productDetailContent.specifications.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
                         </ul>
                       </div>
                     )}
                     {activeTab === 'reviews' && (
                       <div className="container tab-pane active">
                         <div className="reviews-submitted">
-                          <div className="reviewer">Alex Johnson — <span>15 Mar 2024</span></div>
+                          <div className="reviewer">{productDetailContent.submittedReview.reviewer} — <span>{productDetailContent.submittedReview.date}</span></div>
                           <div className="ratting">
                             <i className="fa fa-star"></i><i className="fa fa-star"></i>
                             <i className="fa fa-star"></i><i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
                           </div>
-                          <p>Absolutely amazing headphones! The sound quality is crystal clear and the noise cancellation works perfectly. Worth every penny.</p>
+                          <p>{productDetailContent.submittedReview.text}</p>
                         </div>
                         <div className="reviews-submit">
                           <h4>Give your Review:</h4>
@@ -259,7 +251,8 @@ export default function ProductDetail() {
                 <div className="section-header"><h1>Our Reviews</h1></div>
                 <div className="review-slider">
                   <Slider {...reviewSliderSettings}>
-                    <div className="review-slider-item">
+                    {productDetailContent.carouselReviews.map((review) => (
+                    <div key={review.author} className="review-slider-item">
                       <div className="review-img">
                         <img src="/img/user.jpg" alt="Reviewer" />
                       </div>
@@ -269,38 +262,11 @@ export default function ProductDetail() {
                           <i className="fa fa-star"></i><i className="fa fa-star"></i>
                           <i className="fa fa-star"></i>
                         </div>
-                        <p>"Exceptional quality and fast delivery. Aurevia is my go-to shopping destination!"</p>
-                        <h3>— Sarah Williams</h3>
+                        <p>"{review.quote}"</p>
+                        <h3>— {review.author}</h3>
                       </div>
                     </div>
-                    <div className="review-slider-item">
-                      <div className="review-img">
-                        <img src="/img/user.jpg" alt="Reviewer" />
-                      </div>
-                      <div className="review-text">
-                        <div className="ratting">
-                          <i className="fa fa-star"></i><i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i><i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                        </div>
-                        <p>"Amazing selection of products at competitive prices. Highly recommend Aurevia!"</p>
-                        <h3>— Michael Chen</h3>
-                      </div>
-                    </div>
-                    <div className="review-slider-item">
-                      <div className="review-img">
-                        <img src="/img/user.jpg" alt="Reviewer" />
-                      </div>
-                      <div className="review-text">
-                        <div className="ratting">
-                          <i className="fa fa-star"></i><i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i><i className="fa fa-star"></i>
-                          <i className="fa fa-star-half-alt"></i>
-                        </div>
-                        <p>"Great customer service and the 90-day return policy gives me peace of mind."</p>
-                        <h3>— Emma Rodriguez</h3>
-                      </div>
-                    </div>
+                    ))}
                   </Slider>
                 </div>
               </div>

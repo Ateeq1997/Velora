@@ -1,5 +1,6 @@
 import Layout from '../components/Layout'
 import Breadcrumb from '../components/Breadcrumb'
+import { contactDetails } from '../data/storeContent'
 
 const breadcrumbItems = [
   { label: 'Home', path: '/' },
@@ -17,33 +18,33 @@ export default function Contact() {
             <div className="col-lg-4">
               <div className="contact-info">
                 <h2>Our Office</h2>
-                <h3><i className="fa fa-map-marker"></i> 123 Aurevia Plaza, Los Angeles, CA, USA</h3>
-                <h3><i className="fa fa-phone"></i> +012-345-6789</h3>
-                <h3><i className="fa fa-envelope"></i> office@aurevia.shop</h3>
+                <h3><i className="fa fa-map-marker"></i> {contactDetails.officeAddress}</h3>
+                <h3><i className="fa fa-phone"></i> {contactDetails.phone}</h3>
+                <h3><i className="fa fa-envelope"></i> {contactDetails.officeEmail}</h3>
               </div>
 
               <div className="contact-info">
                 <h2>Our Store</h2>
-                <h3><i className="fa fa-map-marker"></i> 456 Aurevia Gallery, Beverly Hills, CA, USA</h3>
-                <h3><i className="fa fa-phone"></i> +012-345-9876</h3>
-                <h3><i className="fa fa-envelope"></i> store@aurevia.shop</h3>
+                <h3><i className="fa fa-map-marker"></i> {contactDetails.storeAddress}</h3>
+                <h3><i className="fa fa-phone"></i> {contactDetails.altPhone}</h3>
+                <h3><i className="fa fa-envelope"></i> {contactDetails.storeEmail}</h3>
               </div>
 
               <div className="contact-form">
                 <form onSubmit={(e) => e.preventDefault()}>
                   <div className="row">
                     <div className="col-md-6">
-                      <input type="text" className="form-control" placeholder="Your Name" />
+                      <input type="text" className="form-control" placeholder="Name" />
                     </div>
                     <div className="col-md-6">
-                      <input type="email" className="form-control" placeholder="Your Email" />
+                      <input type="email" className="form-control" placeholder="Email" />
                     </div>
                   </div>
                   <div className="form-group">
-                    <input type="text" className="form-control" placeholder="Subject" />
+                    <input type="text" className="form-control" placeholder="Project or inquiry" />
                   </div>
                   <div className="form-group">
-                    <textarea className="form-control" rows="5" placeholder="Message"></textarea>
+                    <textarea className="form-control" rows="5" placeholder="Tell us what you are looking for"></textarea>
                   </div>
                   <div>
                     <button className="btn" type="submit">Send Message</button>

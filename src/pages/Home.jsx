@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Slider from 'react-slick'
 import Layout from '../components/Layout'
 import ProductCard from '../components/ProductCard'
+import { contactDetails, featuredProductIds, recentProductIds, selectProducts } from '../data/storeContent'
 
 const headerSliderSettings = {
   autoplay: true,
@@ -46,21 +47,9 @@ const brandSliderSettings = {
   ],
 }
 
-const featuredProducts = [
-  { id: 1, image: '/img/product-1.jpg', name: 'Premium Wireless Headphones', price: 149 },
-  { id: 2, image: '/img/product-2.jpg', name: 'Designer Leather Jacket', price: 299 },
-  { id: 3, image: '/img/product-3.jpg', name: 'Smart Fitness Watch', price: 199 },
-  { id: 4, image: '/img/product-4.jpg', name: 'Elegant Silk Dress', price: 129 },
-  { id: 5, image: '/img/product-5.jpg', name: 'Pro Gaming Mouse', price: 89 },
-]
+const featuredProducts = selectProducts(featuredProductIds)
 
-const recentProducts = [
-  { id: 6, image: '/img/product-6.jpg', name: 'Casual Denim Jeans', price: 79 },
-  { id: 7, image: '/img/product-7.jpg', name: 'Luxury Perfume Set', price: 119 },
-  { id: 8, image: '/img/product-8.jpg', name: 'Bluetooth Speaker', price: 99 },
-  { id: 9, image: '/img/product-9.jpg', name: 'Running Sneakers', price: 139 },
-  { id: 10, image: '/img/product-10.jpg', name: 'Classic Sunglasses', price: 69 },
-]
+const recentProducts = selectProducts(recentProductIds)
 
 export default function Home() {
   return (
@@ -90,21 +79,21 @@ export default function Home() {
                   <div className="header-slider-item">
                     <img src="/img/slider-1.jpg" alt="Slider 1" />
                     <div className="header-slider-caption">
-                      <p>Discover premium fashion &amp; electronics at unbeatable prices</p>
+                      <p>Curated fashion, statement accessories, and premium tech for a sharper everyday wardrobe</p>
                       <Link className="btn" to="/products"><i className="fa fa-shopping-cart"></i>Shop Now</Link>
                     </div>
                   </div>
                   <div className="header-slider-item">
                     <img src="/img/slider-2.jpg" alt="Slider 2" />
                     <div className="header-slider-caption">
-                      <p>New arrivals every week — stay ahead of the trend</p>
+                      <p>Fresh capsule drops land weekly, balancing clean silhouettes with standout utility</p>
                       <Link className="btn" to="/products"><i className="fa fa-shopping-cart"></i>Shop Now</Link>
                     </div>
                   </div>
                   <div className="header-slider-item">
                     <img src="/img/slider-3.jpg" alt="Slider 3" />
                     <div className="header-slider-caption">
-                      <p>Exclusive deals on top brands — limited time only</p>
+                      <p>Shop limited-run pieces and design-led essentials before they disappear from the edit</p>
                       <Link className="btn" to="/products"><i className="fa fa-shopping-cart"></i>Shop Now</Link>
                     </div>
                   </div>
@@ -229,10 +218,10 @@ export default function Home() {
         <div className="container-fluid">
           <div className="row align-items-center">
             <div className="col-md-6">
-              <h1>Call us for any queries</h1>
+              <h1>Book a private styling or gifting consult</h1>
             </div>
             <div className="col-md-6">
-              <a href="tel:0123456789">+012-345-6789</a>
+              <a href="tel:+13235550148">{contactDetails.phone}</a>
             </div>
           </div>
         </div>
@@ -261,12 +250,12 @@ export default function Home() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-6">
-              <h1>Subscribe to Our Newsletter</h1>
+              <h1>Get first access to capsule drops</h1>
             </div>
             <div className="col-md-6">
               <div className="form">
-                <input type="email" defaultValue="" placeholder="Your email here" />
-                <button>Subscribe</button>
+                <input type="email" defaultValue="" placeholder="Enter your email for launch notes" />
+                <button>Join the List</button>
               </div>
             </div>
           </div>

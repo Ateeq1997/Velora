@@ -13,7 +13,7 @@ const breadcrumbItems = [
 const paymentMethods = [
   { id: 'payment-1', label: 'PayPal', desc: 'Pay securely using your PayPal account. You will be redirected to PayPal to complete your purchase.' },
   { id: 'payment-2', label: 'Payoneer', desc: 'Fast and secure payments with Payoneer. Transfer funds directly from your Payoneer account.' },
-  { id: 'payment-3', label: 'Check Payment', desc: 'Pay by check. Please make your check payable to Aurevia and mail it to our billing address.' },
+  { id: 'payment-3', label: 'Check Payment', desc: 'Pay by check. Please make your check payable to Aurevia Studio and mail it to our billing address.' },
   { id: 'payment-4', label: 'Direct Bank Transfer', desc: 'Transfer directly from your bank account. Contact us for our banking details after placing the order.' },
 ]
 
