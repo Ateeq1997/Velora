@@ -1,17 +1,11 @@
-import { useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import Layout from '../components/Layout'
 import Breadcrumb from '../components/Breadcrumb'
 import ProductCard from '../components/ProductCard'
 import { useShop } from '../context/ShopContext'
-import { productDetailContent, relatedProductIds, selectProducts } from '../data/storeContent'
-
-const breadcrumbItems = [
-  { label: 'Home', path: '/' },
-  { label: 'Products', path: '/products' },
-  { label: 'Product Detail', active: true },
-]
+import { getProductDetailContent, relatedProductIds, selectProducts } from '../data/storeContent'
 
 const productSlider3Settings = {
   autoplay: true,
@@ -35,31 +29,35 @@ const reviewSliderSettings = {
   responsive: [{ breakpoint: 768, settings: { slidesToShow: 1 } }],
 }
 
-const relatedProducts = selectProducts(relatedProductIds)
-
-const productImages = [
-  '/img/product-1.jpg',
-  '/img/product-3.jpg',
-  '/img/product-5.jpg',
-  '/img/product-7.jpg',
-  '/img/product-9.jpg',
-  '/img/product-10.jpg',
-]
+const defaultRelatedProducts = selectProducts(relatedProductIds)
 
 export default function ProductDetail() {
   const navigate = useNavigate()
+  const { productId } = useParams()
   const [searchParams, setSearchParams] = useSearchParams()
+  const detailContent = getProductDetailContent(productId)
   const activeTab = searchParams.get('tab') || 'description'
   const [qty, setQty] = useState(1)
-  const [selectedSize, setSelectedSize] = useState('M')
-  const [selectedColor, setSelectedColor] = useState('Black')
+  const [selectedSize, setSelectedSize] = useState(detailContent.sizes[0])
+  const [selectedColor, setSelectedColor] = useState(detailContent.colors[0])
   const { addToCart, addToWishlist } = useShop()
   const mainSliderRef = useRef(null)
   const navSliderRef = useRef(null)
+  const relatedProducts = defaultRelatedProducts.filter((product) => product.id !== detailContent.product.id)
+  const breadcrumbItems = [
+    { label: 'Home', path: '/' },
+    { label: 'Products', path: '/products' },
+    { label: detailContent.product.name, active: true },
+  ]
+
+  useEffect(() => {
+    setQty(1)
+    setSelectedSize(detailContent.sizes[0])
+    setSelectedColor(detailContent.colors[0])
+  }, [detailContent.product.id])
 
   const currentProduct = {
-    ...selectProducts([productDetailContent.productId])[0],
-    price: 149,
+    ...detailContent.product,
     size: selectedSize,
     color: selectedColor,
   }
@@ -99,14 +97,14 @@ export default function ProductDetail() {
                   <div className="col-md-5">
                     <div className="product-slider-single normal-slider">
                       <Slider ref={mainSliderRef} {...mainSettings}>
-                        {productImages.map((img, i) => (
+                        {detailContent.gallery.map((img, i) => (
                           <img key={i} src={img} alt="Product" />
                         ))}
                       </Slider>
                     </div>
                     <div className="product-slider-single-nav normal-slider">
                       <Slider ref={navSliderRef} {...navSettings}>
-                        {productImages.map((img, i) => (
+                        {detailContent.gallery.map((img, i) => (
                           <div key={i} className="slider-nav-img"><img src={img} alt="Thumb" /></div>
                         ))}
                       </Slider>
@@ -123,7 +121,7 @@ export default function ProductDetail() {
                       </div>
                       <div className="price">
                         <h4>Price:</h4>
-                        <p>${currentProduct.price} <span>${productDetailContent.originalPrice}</span></p>
+                        <p>${currentProduct.price} <span>${detailContent.originalPrice}</span></p>
                       </div>
                       <div className="quantity">
                         <h4>Quantity:</h4>
@@ -140,7 +138,7 @@ export default function ProductDetail() {
                       <div className="p-size">
                         <h4>Size:</h4>
                         <div className="btn-group btn-group-sm">
-                          {['S', 'M', 'L', 'XL'].map((size) => (
+                          {detailContent.sizes.map((size) => (
                             <button key={size} type="button" className={`btn${selectedSize === size ? ' active' : ''}`} onClick={() => setSelectedSize(size)}>{size}</button>
                           ))}
                         </div>
@@ -148,7 +146,7 @@ export default function ProductDetail() {
                       <div className="p-color">
                         <h4>Color:</h4>
                         <div className="btn-group btn-group-sm">
-                          {['White', 'Black', 'Blue'].map((color) => (
+                          {detailContent.colors.map((color) => (
                             <button key={color} type="button" className={`btn${selectedColor === color ? ' active' : ''}`} onClick={() => setSelectedColor(color)}>{color}</button>
                           ))}
                         </div>
@@ -188,14 +186,14 @@ export default function ProductDetail() {
                     {activeTab === 'description' && (
                       <div className="container tab-pane active">
                         <h4>Product Description</h4>
-                        <p>{productDetailContent.description}</p>
+                        <p>{detailContent.description}</p>
                       </div>
                     )}
                     {activeTab === 'specification' && (
                       <div className="container tab-pane active">
                         <h4>Product Specification</h4>
                         <ul>
-                          {productDetailContent.specifications.map((item) => (
+                          {detailContent.specifications.map((item) => (
                             <li key={item}>{item}</li>
                           ))}
                         </ul>
@@ -204,13 +202,13 @@ export default function ProductDetail() {
                     {activeTab === 'reviews' && (
                       <div className="container tab-pane active">
                         <div className="reviews-submitted">
-                          <div className="reviewer">{productDetailContent.submittedReview.reviewer} — <span>{productDetailContent.submittedReview.date}</span></div>
+                          <div className="reviewer">{detailContent.submittedReview.reviewer} — <span>{detailContent.submittedReview.date}</span></div>
                           <div className="ratting">
                             <i className="fa fa-star"></i><i className="fa fa-star"></i>
                             <i className="fa fa-star"></i><i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
                           </div>
-                          <p>{productDetailContent.submittedReview.text}</p>
+                          <p>{detailContent.submittedReview.text}</p>
                         </div>
                         <div className="reviews-submit">
                           <h4>Give your Review:</h4>
@@ -251,7 +249,7 @@ export default function ProductDetail() {
                 <div className="section-header"><h1>Our Reviews</h1></div>
                 <div className="review-slider">
                   <Slider {...reviewSliderSettings}>
-                    {productDetailContent.carouselReviews.map((review) => (
+                    {detailContent.carouselReviews.map((review) => (
                     <div key={review.author} className="review-slider-item">
                       <div className="review-img">
                         <img src="/img/user.jpg" alt="Reviewer" />

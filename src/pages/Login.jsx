@@ -4,7 +4,7 @@ import Breadcrumb from '../components/Breadcrumb'
 
 const breadcrumbItems = [
   { label: 'Home', path: '/' },
-  { label: 'Login & Register', active: true },
+  { label: 'Account Access', active: true },
 ]
 
 export default function Login() {
@@ -18,34 +18,34 @@ export default function Login() {
             {/* Register Form */}
             <div className="col-lg-6">
               <div className="login-form">
-                <h2>Register</h2>
+                <h2>Create Your Aurevia Account</h2>
                 <div className="row">
                   <div className="col-md-6">
                     <label>First Name</label>
-                    <input className="form-control" type="text" placeholder="First Name" />
+                    <input className="form-control" type="text" placeholder="Enter first name" />
                   </div>
                   <div className="col-md-6">
                     <label>Last Name</label>
-                    <input className="form-control" type="text" placeholder="Last Name" />
+                    <input className="form-control" type="text" placeholder="Enter last name" />
                   </div>
                   <div className="col-md-6">
-                    <label>E-mail</label>
-                    <input className="form-control" type="email" placeholder="E-mail" />
+                    <label>Email Address</label>
+                    <input className="form-control" type="email" placeholder="name@domain.com" />
                   </div>
                   <div className="col-md-6">
-                    <label>Mobile No</label>
-                    <input className="form-control" type="tel" placeholder="Mobile No" />
+                    <label>Phone Number</label>
+                    <input className="form-control" type="tel" placeholder="+1 (___) ___-____" />
                   </div>
                   <div className="col-md-6">
-                    <label>Password</label>
-                    <input className="form-control" type="password" placeholder="Password" />
+                    <label>Create Password</label>
+                    <input className="form-control" type="password" placeholder="Set a secure password" />
                   </div>
                   <div className="col-md-6">
-                    <label>Retype Password</label>
-                    <input className="form-control" type="password" placeholder="Retype Password" />
+                    <label>Confirm Password</label>
+                    <input className="form-control" type="password" placeholder="Repeat your password" />
                   </div>
                   <div className="col-md-12">
-                    <button className="btn">Create Account</button>
+                    <button className="btn">Join Aurevia</button>
                   </div>
                 </div>
               </div>
@@ -54,24 +54,24 @@ export default function Login() {
             {/* Login Form */}
             <div className="col-lg-6">
               <div className="login-form">
-                <h2>Sign In</h2>
+                <h2>Member Sign In</h2>
                 <div className="row">
                   <div className="col-md-6">
-                    <label>E-mail / Username</label>
-                    <input className="form-control" type="text" placeholder="E-mail / Username" />
+                    <label>Email or Username</label>
+                    <input className="form-control" type="text" placeholder="Enter your login" />
                   </div>
                   <div className="col-md-6">
                     <label>Password</label>
-                    <input className="form-control" type="password" placeholder="Password" />
+                    <input className="form-control" type="password" placeholder="Enter your password" />
                   </div>
                   <div className="col-md-12">
                     <div className="custom-control custom-checkbox">
                       <input type="checkbox" className="custom-control-input" id="keepSignedIn" />
-                      <label className="custom-control-label" htmlFor="keepSignedIn">Keep me signed in</label>
+                      <label className="custom-control-label" htmlFor="keepSignedIn">Keep me signed in on this device</label>
                     </div>
                   </div>
                   <div className="col-md-12">
-                    <button className="btn">Sign In</button>
+                    <button className="btn">Access Account</button>
                   </div>
                 </div>
               </div>

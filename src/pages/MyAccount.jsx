@@ -2,18 +2,19 @@ import { useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import Layout from '../components/Layout'
 import Breadcrumb from '../components/Breadcrumb'
+import { getProductPath } from '../data/storeContent'
 
 const breadcrumbItems = [
   { label: 'Home', path: '/' },
-  { label: 'My Account', active: true },
+  { label: 'Client Account', active: true },
 ]
 
 const orders = [
-  { id: '#ORD-2024-001', date: '01 Jan 2024', items: 3, total: '$447', status: 'Delivered' },
-  { id: '#ORD-2024-002', date: '15 Feb 2024', items: 1, total: '$149', status: 'Delivered' },
-  { id: '#ORD-2024-003', date: '22 Mar 2024', items: 2, total: '$328', status: 'Processing' },
-  { id: '#ORD-2024-004', date: '10 Apr 2024', items: 4, total: '$516', status: 'Shipped' },
-  { id: '#ORD-2024-005', date: '28 Apr 2024', items: 1, total: '$299', status: 'Processing' },
+  { id: '#AUR-24001', date: '01 Jan 2024', items: 3, total: '$447', status: 'Delivered', recommendedProductId: 1 },
+  { id: '#AUR-24002', date: '15 Feb 2024', items: 1, total: '$149', status: 'Delivered', recommendedProductId: 3 },
+  { id: '#AUR-24003', date: '22 Mar 2024', items: 2, total: '$328', status: 'Processing', recommendedProductId: 2 },
+  { id: '#AUR-24004', date: '10 Apr 2024', items: 4, total: '$516', status: 'Shipped', recommendedProductId: 10 },
+  { id: '#AUR-24005', date: '28 Apr 2024', items: 1, total: '$299', status: 'Processing', recommendedProductId: 4 },
 ]
 
 export default function MyAccount() {
@@ -43,12 +44,12 @@ export default function MyAccount() {
                 <ul className="nav flex-column">
                   <li className="nav-item">
                     <button type="button" className={`nav-link${activeTab === 'profile' ? ' active' : ''}`} onClick={() => setActiveTab('profile')}>
-                      <i className="fa fa-user"></i> My Profile
+                      <i className="fa fa-user"></i> Profile Details
                     </button>
                   </li>
                   <li className="nav-item">
                     <button type="button" className={`nav-link${activeTab === 'orders' ? ' active' : ''}`} onClick={() => setActiveTab('orders')}>
-                      <i className="fa fa-shopping-bag"></i> My Orders
+                      <i className="fa fa-shopping-bag"></i> Orders & Tracking
                     </button>
                   </li>
                   <li className="nav-item">
@@ -58,12 +59,12 @@ export default function MyAccount() {
                   </li>
                   <li className="nav-item">
                     <button type="button" className={`nav-link${activeTab === 'address' ? ' active' : ''}`} onClick={() => setActiveTab('address')}>
-                      <i className="fa fa-map-marker"></i> My Address
+                      <i className="fa fa-map-marker"></i> Saved Address
                     </button>
                   </li>
                   <li className="nav-item">
                     <button type="button" className={`nav-link${activeTab === 'password' ? ' active' : ''}`} onClick={() => setActiveTab('password')}>
-                      <i className="fa fa-lock"></i> Change Password
+                      <i className="fa fa-lock"></i> Security
                     </button>
                   </li>
                   <li className="nav-item">
@@ -82,22 +83,22 @@ export default function MyAccount() {
                     <div className="row">
                       <div className="col-md-6">
                         <label>First Name</label>
-                        <input className="form-control" type="text" defaultValue="John" />
+                        <input className="form-control" type="text" defaultValue="Ariana" />
                       </div>
                       <div className="col-md-6">
                         <label>Last Name</label>
-                        <input className="form-control" type="text" defaultValue="Doe" />
+                        <input className="form-control" type="text" defaultValue="Vale" />
                       </div>
                       <div className="col-md-6">
-                        <label>E-mail</label>
-                        <input className="form-control" type="email" defaultValue="john.doe@example.com" />
+                        <label>Email Address</label>
+                        <input className="form-control" type="email" defaultValue="ariana@aurevia.studio" />
                       </div>
                       <div className="col-md-6">
-                        <label>Mobile No</label>
-                        <input className="form-control" type="tel" defaultValue="+1 234 567 8900" />
+                        <label>Phone Number</label>
+                        <input className="form-control" type="tel" defaultValue="+1 (323) 555-0148" />
                       </div>
                       <div className="col-md-12">
-                        <button className="btn">Update Profile</button>
+                        <button className="btn">Save Profile Changes</button>
                       </div>
                     </div>
                   </div>
@@ -135,7 +136,7 @@ export default function MyAccount() {
                       <div className="mt-3">
                         <h4>{selectedOrder.id}</h4>
                         <p>Placed on {selectedOrder.date} with {selectedOrder.items} item(s). Current status: <strong>{selectedOrder.status}</strong>.</p>
-                        <Link className="btn" to="/product-detail">View Recommended Product</Link>
+                        <Link className="btn" to={getProductPath(selectedOrder.recommendedProductId)}>View Recommended Product</Link>
                       </div>
                     )}
                   </div>
@@ -143,7 +144,7 @@ export default function MyAccount() {
 
                 {activeTab === 'wishlist' && (
                   <div className="account-wishlist">
-                    <p>View your saved items in the <Link to="/wishlist">Wishlist</Link> page.</p>
+                    <p>Your saved edit lives in the <Link to="/wishlist">Wishlist</Link> page, where you can move pieces straight into the cart.</p>
                   </div>
                 )}
 
@@ -175,7 +176,7 @@ export default function MyAccount() {
                         </select>
                       </div>
                       <div className="col-md-12">
-                        <button className="btn">Update Address</button>
+                        <button className="btn">Save Address</button>
                       </div>
                     </div>
                   </div>
@@ -186,18 +187,18 @@ export default function MyAccount() {
                     <div className="row">
                       <div className="col-md-6">
                         <label>Current Password</label>
-                        <input className="form-control" type="password" placeholder="Current Password" />
+                        <input className="form-control" type="password" placeholder="Enter current password" />
                       </div>
                       <div className="col-md-6">
                         <label>New Password</label>
-                        <input className="form-control" type="password" placeholder="New Password" />
+                        <input className="form-control" type="password" placeholder="Choose a new password" />
                       </div>
                       <div className="col-md-6">
                         <label>Confirm Password</label>
-                        <input className="form-control" type="password" placeholder="Confirm Password" />
+                        <input className="form-control" type="password" placeholder="Confirm your new password" />
                       </div>
                       <div className="col-md-12">
-                        <button className="btn">Change Password</button>
+                        <button className="btn">Update Password</button>
                       </div>
                     </div>
                   </div>

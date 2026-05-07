@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
 import Breadcrumb from '../components/Breadcrumb'
 import { useShop } from '../context/ShopContext'
+import { getProductPath } from '../data/storeContent'
 
 const breadcrumbItems = [
   { label: 'Home', path: '/' },
@@ -41,7 +42,7 @@ export default function Cart() {
                         <tr key={item.id}>
                           <td>
                             <div className="img">
-                              <Link to="/product-detail"><img src={item.image} alt={item.name} /></Link>
+                              <Link to={getProductPath(item.id)}><img src={item.image} alt={item.name} /></Link>
                               <p>{item.name}</p>
                             </div>
                           </td>

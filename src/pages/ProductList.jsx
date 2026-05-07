@@ -5,7 +5,7 @@ import Layout from '../components/Layout'
 import Breadcrumb from '../components/Breadcrumb'
 import ProductCard from '../components/ProductCard'
 import { useShop } from '../context/ShopContext'
-import { catalog } from '../data/storeContent'
+import { catalog, getProductPath } from '../data/storeContent'
 
 const sidebarSliderSettings = {
   autoplay: true,
@@ -189,7 +189,7 @@ export default function ProductList() {
                   <Slider {...sidebarSliderSettings}>
                     <div className="product-item">
                       <div className="product-title">
-                        <Link to="/product-detail">{products[0].name}</Link>
+                        <Link to={getProductPath(products[0].id)}>{products[0].name}</Link>
                         <div className="ratting">
                           <i className="fa fa-star"></i><i className="fa fa-star"></i>
                           <i className="fa fa-star"></i><i className="fa fa-star"></i>
@@ -197,11 +197,11 @@ export default function ProductList() {
                         </div>
                       </div>
                       <div className="product-image">
-                        <Link to="/product-detail"><img src="/img/product-1.jpg" alt="Product" /></Link>
+                        <Link to={getProductPath(products[0].id)}><img src={products[0].image} alt={products[0].name} /></Link>
                         <div className="product-action">
                           <Link to="/cart" onClick={() => addToCart(products[0])}><i className="fa fa-cart-plus"></i></Link>
                           <Link to="/wishlist" onClick={() => addToWishlist(products[0])}><i className="fa fa-heart"></i></Link>
-                          <Link to="/product-detail"><i className="fa fa-search"></i></Link>
+                          <Link to={getProductPath(products[0].id)}><i className="fa fa-search"></i></Link>
                         </div>
                       </div>
                       <div className="product-price">
@@ -211,7 +211,7 @@ export default function ProductList() {
                     </div>
                     <div className="product-item">
                       <div className="product-title">
-                        <Link to="/product-detail">{products[2].name}</Link>
+                        <Link to={getProductPath(products[2].id)}>{products[2].name}</Link>
                         <div className="ratting">
                           <i className="fa fa-star"></i><i className="fa fa-star"></i>
                           <i className="fa fa-star"></i><i className="fa fa-star"></i>
@@ -219,11 +219,11 @@ export default function ProductList() {
                         </div>
                       </div>
                       <div className="product-image">
-                        <Link to="/product-detail"><img src="/img/product-3.jpg" alt="Product" /></Link>
+                        <Link to={getProductPath(products[2].id)}><img src={products[2].image} alt={products[2].name} /></Link>
                         <div className="product-action">
                           <Link to="/cart" onClick={() => addToCart(products[2])}><i className="fa fa-cart-plus"></i></Link>
                           <Link to="/wishlist" onClick={() => addToWishlist(products[2])}><i className="fa fa-heart"></i></Link>
-                          <Link to="/product-detail"><i className="fa fa-search"></i></Link>
+                          <Link to={getProductPath(products[2].id)}><i className="fa fa-search"></i></Link>
                         </div>
                       </div>
                       <div className="product-price">

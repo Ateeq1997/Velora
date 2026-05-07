@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
+import { getProductPath } from '../data/storeContent'
 
 export default function Navbar() {
   const location = useLocation()
@@ -8,6 +9,7 @@ export default function Navbar() {
   const [userOpen, setUserOpen] = useState(false)
 
   const isActive = (path) => location.pathname === path ? 'active' : ''
+  const isProductDetailActive = location.pathname.startsWith('/product-detail') ? 'active' : ''
 
   return (
     <div className="nav">
@@ -26,7 +28,7 @@ export default function Navbar() {
             <div className="navbar-nav mr-auto">
               <Link to="/" className={`nav-item nav-link ${isActive('/')}`}>Home</Link>
               <Link to="/products" className={`nav-item nav-link ${isActive('/products')}`}>Products</Link>
-              <Link to="/product-detail" className={`nav-item nav-link ${isActive('/product-detail')}`}>Product Detail</Link>
+              <Link to={getProductPath(1)} className={`nav-item nav-link ${isProductDetailActive}`}>Product Detail</Link>
               <Link to="/cart" className={`nav-item nav-link ${isActive('/cart')}`}>Cart</Link>
               <Link to="/checkout" className={`nav-item nav-link ${isActive('/checkout')}`}>Checkout</Link>
               <Link to="/my-account" className={`nav-item nav-link ${isActive('/my-account')}`}>My Account</Link>
