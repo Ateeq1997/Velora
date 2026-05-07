@@ -4,7 +4,7 @@ export default function TopBar() {
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-6">
-            <i className="fa fa-envelope"></i> support@velora.shop
+            <i className="fa fa-envelope"></i> support@aurevia.shop
           </div>
           <div className="col-sm-6">
             <i className="fa fa-phone-alt"></i> +012-345-6789

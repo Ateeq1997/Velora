@@ -20,7 +20,7 @@ export default function BottomBar() {
           <div className="col-md-3">
             <div className="logo">
               <Link to="/">
-                <img src="/velora-logo.svg" alt="Velora Logo" />
+                <img src="/aurevia-logo.svg" alt="Aurevia Logo" />
               </Link>
             </div>
           </div>

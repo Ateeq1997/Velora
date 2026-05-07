@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 
 const ShopContext = createContext(null)
 
-const STORAGE_KEY = 'velora-shop-state'
+const STORAGE_KEY = 'aurevia-shop-state'
 
 const defaultCartItems = [
   { id: 1, image: '/img/product-1.jpg', name: 'Premium Wireless Headphones', price: 149, qty: 1 },

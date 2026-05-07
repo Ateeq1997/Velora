@@ -5,10 +5,10 @@ import Layout from '../components/Layout'
 
 const pageContent = {
   about: {
-    title: 'About Velora',
+    title: 'About Aurevia',
     eyebrow: 'Luxury commerce, reimagined.',
     copy: [
-      'Velora blends curated fashion, premium accessories, and standout technology into one polished storefront experience.',
+      'Aurevia blends curated fashion, premium accessories, and standout technology into one polished storefront experience.',
       'The brand is designed to feel editorial and elevated, making it a stronger portfolio piece than a generic storefront clone.',
     ],
   },
@@ -16,7 +16,7 @@ const pageContent = {
     title: 'Privacy Policy',
     eyebrow: 'Respecting customer data at every step.',
     copy: [
-      'Velora collects only the information needed to process orders, personalize recommendations, and improve the shopping experience.',
+      'Aurevia collects only the information needed to process orders, personalize recommendations, and improve the shopping experience.',
       'Customer information is handled securely and never shared beyond the services required to operate payments, shipping, and support.',
     ],
   },
@@ -24,7 +24,7 @@ const pageContent = {
     title: 'Terms & Conditions',
     eyebrow: 'Clear rules for a smooth shopping experience.',
     copy: [
-      'By browsing or purchasing through Velora, customers agree to our product availability, pricing, shipping, and returns policies.',
+      'By browsing or purchasing through Aurevia, customers agree to our product availability, pricing, shipping, and returns policies.',
       'We reserve the right to update catalog content, pricing, and service information to keep the storefront accurate and current.',
     ],
   },
@@ -32,7 +32,7 @@ const pageContent = {
     title: 'Payment Policy',
     eyebrow: 'Secure transactions with trusted providers.',
     copy: [
-      'Velora supports secure card payments and digital payment methods through encrypted checkout flows.',
+      'Aurevia supports secure card payments and digital payment methods through encrypted checkout flows.',
       'Orders are confirmed only after successful authorization, and suspicious transactions may be reviewed before fulfillment.',
     ],
   },
@@ -77,7 +77,7 @@ export default function InfoPage({ type }) {
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                   <div className="mt-4">
-                    <Link className="btn" to="/contact">Contact Velora</Link>
+                    <Link className="btn" to="/contact">Contact Aurevia</Link>
                   </div>
                 </div>
               </div>

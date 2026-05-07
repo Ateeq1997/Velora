@@ -1,0 +1,6 @@
+<svg width="260" height="72" viewBox="0 0 260 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="72" height="72" rx="18" fill="#FF6F61"/>
+  <path d="M21 52L36 20L51 52" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="36" cy="29" r="4" fill="white"/>
+  <text x="84" y="47" fill="#1D1D1F" font-family="'Source Code Pro', monospace" font-size="30" font-weight="700" letter-spacing="1.5">Aurevia</text>
+</svg>

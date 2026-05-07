@@ -10,8 +10,8 @@ export default function Footer() {
               <div className="footer-widget">
                 <h2>Get in Touch</h2>
                 <div className="contact-info">
-                  <p><i className="fa fa-map-marker"></i> 123 Velora Avenue, Los Angeles, USA</p>
-                  <p><i className="fa fa-envelope"></i> support@velora.shop</p>
+                  <p><i className="fa fa-map-marker"></i> 123 Aurevia Avenue, Los Angeles, USA</p>
+                  <p><i className="fa fa-envelope"></i> support@aurevia.shop</p>
                   <p><i className="fa fa-phone"></i> +123-456-7890</p>
                 </div>
               </div>
@@ -78,7 +78,7 @@ export default function Footer() {
         <div className="container">
           <div className="row">
             <div className="col-md-6 copyright">
-              <p>Copyright &copy; <Link to="/">Velora</Link>. All Rights Reserved</p>
+              <p>Copyright &copy; <Link to="/">Aurevia</Link>. All Rights Reserved</p>
             </div>
             <div className="col-md-6 template-by">
               <p>Curated luxury, fashion, and tech for modern shoppers</p>

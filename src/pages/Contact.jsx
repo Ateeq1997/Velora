@@ -17,16 +17,16 @@ export default function Contact() {
             <div className="col-lg-4">
               <div className="contact-info">
                 <h2>Our Office</h2>
-                <h3><i className="fa fa-map-marker"></i> 123 Velora Plaza, Los Angeles, CA, USA</h3>
+                <h3><i className="fa fa-map-marker"></i> 123 Aurevia Plaza, Los Angeles, CA, USA</h3>
                 <h3><i className="fa fa-phone"></i> +012-345-6789</h3>
-                <h3><i className="fa fa-envelope"></i> office@velora.shop</h3>
+                <h3><i className="fa fa-envelope"></i> office@aurevia.shop</h3>
               </div>
 
               <div className="contact-info">
                 <h2>Our Store</h2>
-                <h3><i className="fa fa-map-marker"></i> 456 Velora Gallery, Beverly Hills, CA, USA</h3>
+                <h3><i className="fa fa-map-marker"></i> 456 Aurevia Gallery, Beverly Hills, CA, USA</h3>
                 <h3><i className="fa fa-phone"></i> +012-345-9876</h3>
-                <h3><i className="fa fa-envelope"></i> store@velora.shop</h3>
+                <h3><i className="fa fa-envelope"></i> store@aurevia.shop</h3>
               </div>
 
               <div className="contact-form">
@@ -61,7 +61,7 @@ export default function Contact() {
                   allowFullScreen=""
                   aria-hidden="false"
                   tabIndex="0"
-                  title="Velora Location"
+                  title="Aurevia Location"
                 ></iframe>
               </div>
             </div>

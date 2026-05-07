@@ -269,7 +269,7 @@ export default function ProductDetail() {
                           <i className="fa fa-star"></i><i className="fa fa-star"></i>
                           <i className="fa fa-star"></i>
                         </div>
-                        <p>"Exceptional quality and fast delivery. Velora is my go-to shopping destination!"</p>
+                        <p>"Exceptional quality and fast delivery. Aurevia is my go-to shopping destination!"</p>
                         <h3>— Sarah Williams</h3>
                       </div>
                     </div>
@@ -283,7 +283,7 @@ export default function ProductDetail() {
                           <i className="fa fa-star"></i><i className="fa fa-star"></i>
                           <i className="fa fa-star"></i>
                         </div>
-                        <p>"Amazing selection of products at competitive prices. Highly recommend Velora!"</p>
+                        <p>"Amazing selection of products at competitive prices. Highly recommend Aurevia!"</p>
                         <h3>— Michael Chen</h3>
                       </div>
                     </div>
